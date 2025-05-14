@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import DOMPurify from 'dompurify'
 
 const storedComments = ref([]) 
 const userInput = ref('')
@@ -14,6 +15,8 @@ storedComments.value = [
         'test',
       'aaa<img src="x" onerror="alert(\'Stored XSS!\')" />'
 ]
+// sanitize
+// storedComments.value = rawComments.map(c => DOMPurify.sanitize(c))
 });
 </script>
 
@@ -30,6 +33,7 @@ storedComments.value = [
             </li>
         </ul>
     </div>
+    <!-- <img src="x" onerror="alert('Stored XSS!')" /> -->
 </template>
 
 

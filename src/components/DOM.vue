@@ -1,10 +1,13 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import DOMPurify from 'dompurify'
 
 const storedData = ref('')
 
 onMounted(() => {
-  storedData.value = localStorage.getItem('userData') 
+  storedData.value = localStorage.getItem('userData')
+  // sanitize
+  // storedData.value = DOMPurify.sanitize(localStorage.getItem('userData'))
 })
 </script>
 

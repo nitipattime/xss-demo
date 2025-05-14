@@ -1,11 +1,14 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import DOMPurify from 'dompurify'
 
 const query = ref('')
 
 onMounted(() => {
   const params = new URLSearchParams(window.location.search)
   query.value = params.get('q') || ''
+  // sanitize
+  // query.value = DOMPurify.sanitize(params.get('q')) || ''
 })
 </script>
 
